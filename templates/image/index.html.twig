@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+    <h1>Загрузка изображений</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.images) }}
+    {{ form_row(form.submit) }}
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello IndexController!{% endblock %}
+
+{% block body %}
+    <h1>Просмотр изображений</h1>
+    <form action="{{ path('image_sort') }}" method="GET">
+        <label for="sort-select">Сортировать по:</label>
+        <select id="sort-select" name="sort">
+            <option value="name">Названию</option>
+            <option value="CreatedAt">Дате загрузки</option>
+        </select>
+        <button type="submit">Сортировать</button>
+    </form>
+    {% for image in images %}
+        <ul>
+            <li>
+                <a href="{{ asset("uploads/images/" ~ image.name) }}" target="_blank">
+                    <img style="height: 100px; width: 100px" src="{{ asset("uploads/images/" ~ image.name) }}"
+                         alt="{{ image.name }}">
+                </a>
+                <span>
+                    <p>Название: {{ image.name }}</p>
+                    <p>Дата загрузки: {{ image.CreatedAt|date('Y-m-d H:i:s') }}</p>
+                </span>
+            </li>
+        </ul>
+    {% endfor %}
+{% endblock %}
